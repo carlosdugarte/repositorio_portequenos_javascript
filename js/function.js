@@ -417,7 +417,7 @@ function pagarCompra(e){
 
                     Swal.fire({
                         icon: "success",
-                        title: `Muchas gracias ${respuesta.nombre} por tu interes en esta pagina web! Hemos registrado su compra por un valor de ${respuesta.totalPagar}`,
+                        title: `Muchas gracias ${respuesta.nombre} por tu interés en esta página web! Hemos registrado su compra por un valor de ${respuesta.totalPagar} ARS`,
                         text: `Este es un emprendimiento ficticio. Luego se le enviará a su correo un enlace y se le permitiría pagar tu compra mediante mercado pago u otro método.`,
                         confirmButtonColor: 'rgb(0, 0, 0)',
                         footer: `<a href="../index.html">Volver al inicio</a>`, 
