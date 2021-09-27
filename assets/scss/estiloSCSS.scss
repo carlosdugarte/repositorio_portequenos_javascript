@@ -1,0 +1,405 @@
+
+// EXTEND para Párrafos
+.estiloParrafo{    
+    // font-family: 'Merriweather', serif;
+    font-size: large;
+    color:rgb(26, 6, 63);
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  
+  .parrafo{
+    @extend .estiloParrafo;
+    letter-spacing: 1px;
+    line-height: 20px;
+    text-align:start;
+  }
+  
+  .parrafo2{
+    @extend .estiloParrafo;
+    font-size: medium;
+    text-align: center;
+  }
+  
+  //MIXIN para titulares
+  @mixin estiloTitulares($tamaño, $colorLetra){
+    font-size: $tamaño;
+    color: $colorLetra;
+    font-family: 'Lato', sans-serif;    
+    text-align: center;    
+    margin-top: 20px;
+  }
+  
+  .titulos{
+    @include estiloTitulares(x-large, rgb(228, 61, 0));
+  }
+  
+  .titulos2{
+    @include estiloTitulares(large, rgb(228, 61, 0));
+  }
+
+  .titulos3{
+    @include estiloTitulares(large, rgb(255, 255, 255)); 
+  }
+
+  .titulos4{
+    @include estiloTitulares(medium, rgb(228, 61, 0));
+  }
+
+//1. BEM Galería para las cards
+.card{        
+    &__animacion:hover{
+        transform: scale(0.9,0.9);
+    }
+
+    &__parrafo{
+      @extend .estiloParrafo;
+    }
+}
+
+//2. BEM para contendidos dividos en texto e imagen
+.contenidoDividido{
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-around;
+  align-content:space-evenly;       
+  align-items:flex-start;
+  flex-wrap: wrap;  
+
+  &__texto{        
+      width: 50%;
+
+      &__parrafo{
+          @extend .estiloParrafo; 
+      }
+  }
+
+  &__imagen{
+      width: 450px;
+      height: 300px;
+      align-content: center;
+      justify-content: center;        
+  }
+}
+
+//3. BEN para el pie de página
+.footer{
+
+  text-align: center;    
+//   background-image: linear-gradient(to top, black,rgb(122, 122, 122));
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #343a40;
+  color: #fff;
+
+
+  &__imagen{
+      width: 50px;
+      height: 50px;
+  }
+
+   &__parrafo{
+       @extend .estiloParrafo; 
+       color: rgb(255, 255, 255);
+       }
+    
+}
+
+//4. BEN para frame video
+.video{    
+  display: flex; 
+  flex-direction: row;
+  justify-content: center; 
+  align-content: center;   
+  align-items: center;
+  flex-wrap: wrap;     
+  /* Animación*/
+  animation: fadeInLeft; 
+  animation-duration: 2s; 
+
+  &__frame{
+      width: 683px;
+      height: 384px;
+  }
+}
+
+//5. BEN para contenidos enteros que tengan sólo párrafo
+.contenidoEntero{
+  &__parrafo{
+      @extend .estiloParrafo;
+  }
+}
+
+//6. BEN para botones agregando modifier
+.boton{
+  @extend .estiloParrafo;
+  &--oscuro{
+      color: #ffffff;
+      background-color: rgb(0, 0, 0);
+  }
+
+  &--claro{
+      color: rgb(0, 0, 0); 
+      background-color:rgb(255, 187, 0); 
+  }
+}
+
+//7. BEN para colores del encabezado y el contenido de una tabla
+.table{
+  @extend .estiloParrafo;
+  &__encabezado{
+      color:rgb(228, 61, 0);
+  }
+  &__contenido{
+      color:rgb(0, 0, 0);
+  }
+}
+
+
+/* estilo por etiqueta */
+section{
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin:25px;
+}
+
+label{
+    color:rgb(0, 0, 0);
+    @extend .estiloParrafo;
+} 
+
+ol{
+    color:rgb(0, 0, 0);
+    list-style:lower-latin;
+    @extend .estiloParrafo;
+}
+
+ul{
+    color:rgb(0, 0, 0);  
+    list-style: square;
+    @extend .estiloParrafo;
+}
+
+/* estilo por clase y id */
+.copyright {
+    background-color:#212529;
+  }
+
+.cuerpo{
+    margin:0;
+    background-color:rgb(240, 240, 240);
+}
+
+ /* Imagenes */
+#imgLogo{
+    width: 90px;
+    height: 40px;
+}
+
+#imgProductos{
+    width: 300px;
+    height: 300px;
+}
+
+#imgCarrito {
+    width: 40px;
+    height: 40px; } 
+
+/* Home */
+
+//Navegador
+.nav-link{
+    @extend .estiloParrafo;
+}
+//botones del navegador para que sea naranja
+.btn-outline-success {
+    color:rgb(255, 187, 0); 
+    border-color:rgb(255, 187, 0); 
+}
+
+.btn-outline-success:hover {
+    background-color: rgb(255, 187, 0); ;
+    color:rgb(0, 0, 0); 
+    border-color:rgb(255, 187, 0); 
+}
+
+// Carrusel *anidación SCSS*
+.carousel-item{
+    h5{
+        color: orange;
+        @extend .estiloParrafo;
+        font-weight: bold;
+    }
+
+    p{
+        color: white;
+        @extend .estiloParrafo;
+    }
+}
+
+// galeria
+.sectionGaleria{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around; 
+    align-content: space-around;   
+    align-items: center;
+    flex-wrap: wrap;   
+}
+
+
+
+ /* Productos */
+ .divProductos{
+    display: flex; 
+    flex-direction: row; 
+    align-content: space-evenly;   
+    justify-content:space-evenly;   
+    flex-wrap: wrap;     
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin:25px;
+}
+
+ /* Productos */
+ .divItem{
+    display: flex; 
+    flex-direction: row; 
+    align-content: space-evenly;   
+    justify-content:space-evenly;   
+    flex-wrap: wrap;     
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin:25px;
+}
+
+#productoAgotado{
+    background-color: red;
+    color: white;
+    position: relative;
+    text-align: center;
+    top: 50px; 
+    transform: skewY(10deg);
+}
+
+
+/* Contenedores Nosotros */
+.sectionNosotros{
+    background-color: rgb(255, 255, 255);
+}
+
+
+ /* Contenedores Contacto */
+ .sectionContacto{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-around;
+    align-content:space-evenly;       
+    align-items:flex-start;
+    flex-wrap: wrap;  
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin:25px;
+ }
+
+/* GRID. Plantilla para el Home */
+#grillaHome{
+    display:grid;
+    grid-template-rows:  auto auto  auto auto;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+            "menu"
+            "encabezado"                        
+            "contenido"  
+            "pie"; 
+}
+
+/* GRID. Plantilla para el resto de los modulos productos, pedidos, nosotros, contacto */
+#grillaModulos{
+    display:grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+            "menu"            
+            "contenido"
+            "pie";   
+}
+
+/* setear grid-areas */
+header{
+    grid-area:encabezado;
+    background-color: rgb(0, 0, 0);
+ }
+nav {
+    grid-area:menu;
+}
+
+main{
+    grid-area:contenido;
+}
+footer{    
+    grid-area:pie;
+}
+
+/* Media querys para IPAD*/
+@media only screen and (max-width: 768px){
+
+    #grillaHome{
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: 100%;
+    } 
+
+    #grillaModulos{
+        grid-template-rows:  auto auto auto;
+        grid-template-columns: 100%;       
+    }
+
+    .contenidoDividido__texto {
+        width: 100%;
+     }
+
+     #imgProductos{
+        width: 250px;
+        height: 250px;
+    }
+
+    .video__frame{
+        width: 400px;
+        height: 300px;
+    }
+}
+
+/* Media querys para TELEFONOS CELULAR*/
+@media only screen and (max-width: 480px){
+
+    #grillaHome{
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: 100%;
+    } 
+
+    #grillaModulos{
+        grid-template-rows:  auto auto auto;
+        grid-template-columns: 100%;       
+    }
+  
+    .contenidoDividido__texto{
+        width: 90%;
+     }
+
+     .contenidoDividido__imagen{
+        width: 200px;
+        height: 150px;
+     }
+    
+    #imgProductos{
+        width: 200px;
+        height: 200px;
+    }
+
+    .video__frame{
+        width: 250px;
+        height: 250px;
+    }
+
+} 

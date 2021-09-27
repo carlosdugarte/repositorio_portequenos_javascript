@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="Pedidos, portequeños, tequeños, domicilio, delivery">
+        <meta name="description" content="Sitio web de Portequeños, que contiene información del historial de pedidos hechos por el usuario">
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300&display=swap" rel="stylesheet">
+        <!-- bootsrap V.4.6.x-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <!-- Estilos -->
+        <link rel="stylesheet" href="../assets/css/estilo.css">
+        <title>Pedidos</title>
+    </head>
+    <body class="cuerpo">         
+        <div id="grillaModulos">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img id= "imgLogo" src="../img/logo2.png" alt="logo Portequeños">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./productos.html">Productos </a>
+                        </li>    
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./nosotros.html">Nosotros </a>
+                        </li>  
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contactos.html">Contacto</a>
+                        </li>  
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">  
+                        <a class="navbar-brand" href="./carrito.html">
+                            <img id= "imgCarrito" src="../img/carrito.png" alt="carrito">
+                        </a>                      
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </nav>            
+            <main class="mainCarrito">
+                <h1 class="titulos">Carrito de compras</h1>
+                <!-- tabla del carrito -->
+                <div class="container" style ="background-color: white;">                   
+                    <table class="table">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Item</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Acción</th>
+                          <th scope="col">Total (Costo+IVA)</th>
+                        </tr>
+                      <tbody id="items" class="bodyTabla">
+                            <!-- Aqui vamos a insrtar HMTL DOM CARRITO-->
+                      </tbody>
+                      <tfoot class="footerTabla">
+                            <tr id="footer">  
+                            <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+                            </tr>
+                      </tfoot>
+                    </table>  
+                    <!-- Aqui vamos a insrtar HMTL DOM PRODUCTOS-->
+
+                    <!-- Botón para comprar -->
+                    <div id="botonComprar">
+                        <button type="button" class="form-control boton boton--oscuro" data-toggle="modal" data-target="#compraModal">
+                            Comprar
+                        </button> 
+                    </div>
+
+                </div>  
+
+
+                
+                <!-- Modal para botón Comprar-->
+                <div class="modal fade" id="compraModal" tabindex="-1" aria-labelledby="compraModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="compraModalLabel">Confirmación del pago</h5>
+                                
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- Cupon descuento -->
+                                <form>
+                                    <div>                      
+
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" id="cuponDescuento"  placeholder="Ingrese su cupon aquí" aria-label="cupon" aria-describedby="button-addon2">
+                                            <button class="btn btn btn-dark" id="botonCuponDescuento"  type="button" id="button-addon2">Canjear</button>
+                                        </div>
+                                        <p id="mensajeValidacionCupon"></p>
+
+                                    </div>
+                                    <!-- Total -->
+                                    <div>                                        
+                                        <span class="input-group-text parrafo" id="inputGroup-sizing-default">Total a pagar:</span>
+                                        <input readonly type="text" class="form-control" id="totalPagar" aria-label="total"><br>
+                                    </div>                                    
+                                    <!-- Correo -->
+                                    <div>
+                                        <label for="inputCorreo" class="form-label">Correo</label>
+                                        <input required type="email" class="form-control" id="correo">
+                                        <p id="mensajeCorreo"></p>
+                                    
+                                    </div>
+                                    <!-- Nombre -->                                    
+                                    <div class="mb-3">
+                                        <label for="inputNombre" class="form-label">Nombre</label>
+                                        <input required type="text" class="form-control" id="nombre" aria-describedby="Indique su nombre">
+                                        <p id="mensajeNombre"></p>
+                                    </div>
+                                    <!-- Footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn btn-dark" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn btn-dark" id="botonPagar">pagar</button>
+                                    </div>
+                                </form> 
+                            </div>
+                        </div>
+                    </div>
+                </div>                   
+            </main>
+        </div> 
+        <script src="../js/sweetalert2.all.min.js"></script>
+        <!-- Jquery V.3.6.x-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>    
+                <!-- bootstrap V.4.6.x-->
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  
+          <!-- Llamadas de scripts propios -->
+        <script src="../js/function.js"></script>
+        <script src="../js/class.js"></script>
+        <script src="../js/carrito.js"></script>
+   </body>
+</html>
