@@ -388,6 +388,9 @@ function aplicarDescuento(e){
                         $('#mensajeValidacionCupon').text('Debe ingresar un cupón valido');
             break;
         }
+    }else{
+        $('#mensajeValidacionCupon').css("color", "#cb3234");
+        $('#mensajeValidacionCupon').text('Lo sentimos. sólo puede aplicar 1 sólo descuento');
     }
 }
 

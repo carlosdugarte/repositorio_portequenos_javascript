@@ -8,5 +8,9 @@ getStorageCarrito();
 animarTituloNuestrosProductos();
 
 //boton de búsqueda
+//autómatico al typear
+$('#buscador').on('keyup', filtrarProductos);
+//al presionar el botón buscar
 $('#botonBuscar').on('click', filtrarProductos);
+
 
